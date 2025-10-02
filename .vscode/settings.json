@@ -1,1 +1,29 @@
-{}
+{
+  // === Auto Imports ===
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit", // auto-import missing modules
+    "source.fixAll.eslint": "explicit" // fix eslint issues on save
+  },
+
+  // === Formatting ===
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true, // format whole file on save
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+
+  // === ESLint ===
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.alwaysShowStatus": true,
+
+  // === Optional Quality of Life ===
+  "files.eol": "\n", // enforce LF line endings
+  "editor.tabSize": 2, // 2-space tabs
+  "editor.insertSpaces": true
+}
