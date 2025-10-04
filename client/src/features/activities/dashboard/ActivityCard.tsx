@@ -7,20 +7,17 @@ import {
   Chip,
   Typography,
 } from "@mui/material";
+import { useActivities } from "../../../lib/hooks/useActivities";
 
 type Props = {
   activity: Activity;
   selectActivity: (id: string) => void;
   handleOpenForm: (id: string) => void;
   cancelSelectedActivity: () => void;
-  handleDelete: (id: string) => void;
 };
 
-export default function ActivityCard({
-  activity,
-  selectActivity,
-  handleDelete,
-}: Props) {
+export default function ActivityCard({ activity, selectActivity }: Props) {
+  const { deleteActivity } = useActivities();
   return (
     <Card sx={{ borderRadius: 3 }}>
       <CardContent>
@@ -43,7 +40,10 @@ export default function ActivityCard({
           </Button>
           <Button
             color="error"
-            onClick={() => handleDelete(activity.id)}
+            onClick={() => {
+              deleteActivity.mutate(activity.id);
+            }}
+            disabled={deleteActivity.isPending}
             size="medium"
             variant="contained"
           >

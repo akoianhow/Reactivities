@@ -6,14 +6,12 @@ type Props = {
   selectActivity: (id: string) => void;
   cancelSelectedActivity: () => void;
   handleOpenForm: (id: string) => void;
-  handleDelete: (id: string) => void;
 };
 export default function ActivityList({
   activities,
   selectActivity,
   cancelSelectedActivity,
   handleOpenForm,
-  handleDelete,
 }: Props) {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
@@ -24,7 +22,6 @@ export default function ActivityList({
           selectActivity={selectActivity}
           cancelSelectedActivity={cancelSelectedActivity}
           handleOpenForm={handleOpenForm}
-          handleDelete={handleDelete}
         />
       ))}
     </Box>
