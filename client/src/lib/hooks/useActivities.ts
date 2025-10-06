@@ -1,9 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import agent from "../api/agent";
+import { useLocation } from "react-router";
 
 //This is a custom hook.
 export const useActivities = (id?: string) => {
   const queryClient = useQueryClient();
+  const location = useLocation();
   const { data: activities, isPending } = useQuery({
     queryKey: ["activities"],
     queryFn: async () => {
@@ -18,7 +20,7 @@ export const useActivities = (id?: string) => {
       const response = await agent.get<Activity>(`/activities/${id}`);
       return response.data;
     },
-    enabled: !!id,
+    enabled: !!id && location.pathname === "/activities",
   });
 
   const updateActivity = useMutation({
