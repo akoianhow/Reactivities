@@ -23,7 +23,6 @@ export const useActivities = (id?: string) => {
 
   const updateActivity = useMutation({
     mutationFn: async (activity: Activity) => {
-      console.log(activity);
       await agent.put("/activities", activity);
     },
     onSuccess: async () => {
