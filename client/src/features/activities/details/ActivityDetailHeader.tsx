@@ -1,6 +1,6 @@
 import { Card, Badge, CardMedia, Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router";
-import { formatDate } from "../../../lib/types/util/util";
+import { format, parseISO } from "date-fns";
 
 type Props = {
   activity: Activity;
@@ -56,7 +56,7 @@ export default function ActivityDetailsHeader({ activity }: Props) {
             {activity.title}
           </Typography>
           <Typography variant="subtitle1">
-            {formatDate(activity.date)}
+            {format(parseISO(activity.date), "dd MMM yyyy h:mm a")}
           </Typography>
           <Typography variant="subtitle2">
             Hosted by{" "}
@@ -84,7 +84,7 @@ export default function ActivityDetailsHeader({ activity }: Props) {
                 variant="contained"
                 color="primary"
                 component={Link}
-                to={`/manage/activityId`}
+                to={`/manage/${activity.id}`}
                 disabled={isCancelled}
               >
                 Manage Event

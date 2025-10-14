@@ -12,7 +12,7 @@ export default function ActivityDetail() {
 
   if (isLoadingActivity) return <Typography>Loading....</Typography>;
 
-  if (!activity) return <Typography>Activity not found.</Typography>;
+  if (!activity) return <Typography>Activity not found...</Typography>;
   return (
     <Grid2 container spacing={3}>
       <Grid2 size={8}>

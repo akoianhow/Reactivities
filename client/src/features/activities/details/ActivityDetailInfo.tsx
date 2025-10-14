@@ -1,7 +1,6 @@
 import { CalendarToday, Info, Place } from "@mui/icons-material";
 import { Divider, Grid2, Paper, Typography } from "@mui/material";
-import { formatDate } from "../../../lib/types/util/util";
-
+import { format, parseISO } from "date-fns";
 type Props = {
   activity: Activity;
 };
@@ -22,7 +21,9 @@ export default function ActivityDetailsInfo({ activity }: Props) {
           <CalendarToday color="info" fontSize="large" />
         </Grid2>
         <Grid2 size={11}>
-          <Typography>{formatDate(activity.date)}</Typography>
+          <Typography>
+            {format(parseISO(activity.date), "dd MMM yyyy h:mm a")}
+          </Typography>
         </Grid2>
       </Grid2>
       <Divider />

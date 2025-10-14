@@ -9,18 +9,21 @@ export const useActivities = (id?: string) => {
   const { data: activities, isPending } = useQuery({
     queryKey: ["activities"],
     queryFn: async () => {
+      console.log("GETTING ALL id:" + id);
       const response = await agent.get<Activity[]>("/activities");
       return response.data;
     },
+    enabled: !id && location.pathname === "/activities",
   });
 
   const { data: activity, isLoading: isLoadingActivity } = useQuery({
     queryKey: [activities, id],
     queryFn: async () => {
+      console.log("GETTING BY ID. id: " + id);
       const response = await agent.get<Activity>(`/activities/${id}`);
       return response.data;
     },
-    enabled: !!id && location.pathname === "/activities",
+    enabled: !!id,
   });
 
   const updateActivity = useMutation({
