@@ -14,7 +14,7 @@ namespace Application.Activities.Validators
             RuleFor(x => selector(x).Title)
                    .NotEmpty()
                    .MaximumLength(100).WithMessage("only up to 100 chars.")
-                   .WithMessage("Titlex is required.");
+                   .WithMessage("Title is required.");
             RuleFor(x => selector(x).Description)
             .NotEmpty()
             .WithMessage("Description sis required.");

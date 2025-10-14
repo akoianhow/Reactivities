@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import agent from "../api/agent";
 import { useLocation } from "react-router";
+import { Activity } from "../types";
 
 //This is a custom hook.
 export const useActivities = (id?: string) => {
@@ -28,6 +29,7 @@ export const useActivities = (id?: string) => {
 
   const updateActivity = useMutation({
     mutationFn: async (activity: Activity) => {
+      console.log(activity);
       await agent.put("/activities", activity);
     },
     onSuccess: async () => {
