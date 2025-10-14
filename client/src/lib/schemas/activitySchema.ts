@@ -16,4 +16,4 @@ export const activitySchema = z.object({
   venue: requiredString("Venue"),
 });
 
-export type ActivitySchema = z.infer<typeof activitySchema>;
+export type ActivitySchema = z.input<typeof activitySchema>;
